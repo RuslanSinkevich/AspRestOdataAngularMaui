@@ -1,0 +1,19 @@
+<h2>Список задач</h2>
+<div class="todo">
+  <div class="todo__input">
+    <form [formGroup]="formList" (ngSubmit)="addlistTask()">
+      <input formControlName="title" class="todo__text" type="text" />
+      <button type="submit" [disabled]="!formList.valid" class="todo__add"></button>
+    </form>
+  </div>
+  <p *ngIf="title.errors?.minlength && title.touched" class="todo__error">Ошибка! минимальная длина 2 символа </p>
+
+  <ul class="todo__items">
+    <li *ngFor="let taskInL of List " class="todo__item" data-todo-state="active">
+      <a (click)="taskListId=taskInL.id; taskListTitle=taskInL.title"  href="#"> <span class="todo__task"> {{ taskInL.title }}</span></a>
+      <button (click)="removelistT(taskInL.id)" class="todo__action todo__action_delete todo__action_delete-right"
+        data-todo-action="deleted"></button>
+    </li>
+  </ul>
+</div>
+<app-todo-tasks *ngIf="taskListId!=0" [taskListId]="taskListId" [taskListTitle]="taskListTitle"> </app-todo-tasks>

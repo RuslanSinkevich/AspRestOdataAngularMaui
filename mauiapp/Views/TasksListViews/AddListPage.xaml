@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="TodoREST.Views.TasksListViews.AddListPage" 
+             Title="Todo">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Margin"
+                    Value="0,10,0,10" />
+            <Setter Property="FontAttributes"
+                    Value="Bold" />
+            <Setter Property="FontSize"
+                    Value="20" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Margin"
+                    Value="0,5,0,5" />
+        </Style>
+    </ContentPage.Resources>
+    <VerticalStackLayout Margin="20">
+        <Label Text="Имя" />
+        <Entry Text="{Binding Path=TasksList.Title}" 
+               Placeholder="имя списка" />
+       
+        <Button Text="Создать новый список задач" 
+                Clicked="OnSaveButtonClicked" />
+        <Button Text="Назад" 
+                Clicked="OnCancelButtonClicked" />
+    </VerticalStackLayout>
+</ContentPage>

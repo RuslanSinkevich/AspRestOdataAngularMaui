@@ -1,0 +1,1 @@
+C:\asp_angular_odata\mauiapp\mauiapp.csproj;x64

@@ -1,0 +1,41 @@
+<h2>Задачи ({{ taskListTitle }})</h2>
+<div class="todo">
+  <div class="todo__input">
+    <form [formGroup]="form" (ngSubmit)="addTask()">
+      <input formControlName="title" class="todo__text" type="text" />
+      <button type="submit" [disabled]="!form.valid" class="todo__add"></button>
+    </form>
+  </div>
+  <select [(ngModel)]="statusId" (change)="task()" class="todo__options">
+    <option value="1">активные</option>
+    <option value="2">завершённые</option>
+    <option value="3">удалённые</option>
+    <option value="0">все задачи</option>
+  </select>
+  <p *ngIf="title.errors?.minlength && title.touched" class="todo__error">Ошибка! минимальная длина 2 символа </p>
+
+  <ul class="todo__items">
+    <li
+      *ngFor="let task of Tasks"
+      class="todo__item"
+      [attr.data-todo-state]="task.statusId === 1 ? 'active' :  (task.statusId === 2 ? 'completed'  : 'deleted')"
+    >
+      <span class="todo__task"> {{ task.title }}</span>
+      <button
+        (click)="editTask(task, 1)"
+        class="todo__action todo__action_restore"
+        data-todo-action="active"
+      ></button>
+      <button
+        (click)="editTask(task, 2)"
+        class="todo__action todo__action_complete"
+        data-todo-action="completed"
+      ></button>
+      <button
+        (click)="editTask(task, 3)"
+        class="todo__action todo__action_delete "
+        data-todo-action="deleted"
+      ></button>
+    </li>
+  </ul>
+</div>

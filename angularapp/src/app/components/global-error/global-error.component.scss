@@ -1,0 +1,25 @@
+.global-error{
+  display: flex;
+  height: 50px;
+  padding: 4px;
+  margin: 0;
+  background-color:crimson;
+  color: white;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  button{
+    position: absolute;
+    top: 14px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    color: white;
+    border: 1px solid;
+    border-radius: 2px;
+    border-color:darksalmon;
+    font-size: 28px;
+    background: transparent;
+  }
+}
